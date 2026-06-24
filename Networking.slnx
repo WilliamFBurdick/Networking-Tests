@@ -3,5 +3,6 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="SimpleExample/SimpleExample.vcxproj" />
+  <Project Path="NetCommon/NetCommon.vcxproj" Id="893ab764-f9a6-4018-9c1d-7ab4dd0240ca" />
+  <Project Path="SimpleExample/SimpleExample.vcxproj" Id="dfeae380-4ec0-43c9-b7d4-a2b7791921c1" />
 </Solution>
