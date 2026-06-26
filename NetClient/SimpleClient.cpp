@@ -6,28 +6,23 @@ enum class CustomMsgTypes : uint32_t
 	GeneralPoll
 };
 
+class CustomClient : public networking::client_interface<CustomMsgTypes>
+{
+public:
+	bool Heartbeat(float value)
+	{
+		networking::message<CustomMsgTypes> msg;
+		msg.header.id = CustomMsgTypes::Heartbeat;
+		msg << value;
+		//Send(msg);
+	}
+};
+
 int main()
 {
-	networking::message<CustomMsgTypes> msg;
-	msg.header.id = CustomMsgTypes::Heartbeat;
-
-	int a = 1;
-	bool b = true;
-	float c = 3.14159f;
-
-	struct
-	{
-		float x;
-		float y;
-	} d[5];
-
-	msg << a << b << c << d;
-
-	a = 99;
-	b = false;
-	c = 99.0f;
-
-	msg >> d >> c >> b >> a;
+	CustomClient c;
+	c.Connect("website.com", 60000);
+	c.Heartbeat(200.f);
 
 	return 0;
 }
